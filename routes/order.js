@@ -31,7 +31,7 @@ router.post(
     );
 
 router.post(
-    '/shippinginfo/',
+    '/shippinginfo',
     guestShipping
     );
 
