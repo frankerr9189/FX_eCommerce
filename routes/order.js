@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {requireSignin, isAuth, isAdmin} = require("../controllers/auth");
 const {userById, addOrderToUserHistory} = require("../controllers/user");
-const {create, listOrders, getStatusValues, orderById, updateOrderStatus, getMethodValues} = require("../controllers/order");
+const {create, guestCreate, listOrders, getStatusValues, orderById, updateOrderStatus, guestShipping, getMethodValues} = require("../controllers/order");
 const {decreaseQuantity} = require('../controllers/product');
 
 router.post(
@@ -23,5 +23,16 @@ router.put('/order/:orderId/status/:userId', requireSignin, isAuth, isAdmin, upd
 router.param('userId', userById);
 router.param('orderId', orderById);
 
+//Guest Check
+router.post(
+    "/order/guestcreate/",  
+    decreaseQuantity,
+    guestCreate
+    );
+
+router.post(
+    '/shippinginfo/',
+    guestShipping
+    );
 
 module.exports = router;
