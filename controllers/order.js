@@ -3,7 +3,6 @@ const {errorHandler} = require('../helpers/dbErrorHandler');
 
 // require on top
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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');
  
 // your create order method with email capabilities
 exports.create = (req, res) => {
